@@ -219,30 +219,162 @@ def basic_action():
         elif l >=10:
             pet.love = "hates you"
         pet.hp = health
+
+
+
 def of_age():
     global name
+    global h
+    global c
+    global e
+    global l 
+    global sp
+    global st
+    global a
+    global ag
+    global health
     print("Congratulations!! You have successfully kept your pet",(name),"alive for five whole years! This means that you have unlocked some brand new activities. You can now access the shop to buy new pets. You can take your pets to shows to test thier strength and speed against others or you could force your pets to work in factories! The world is your oyster! Have fun!") 
-    action=int(input("""what action would you like to perform?
-    1.check pet hunger
-    2.check pet energy level
-    3.check pet affection level
-    4.check pet hp
-    5.check pet cleanlieness
-    6.check pet speed
-    7.check pet strength
-    8.check pet size
-    9.check pet age
-    10.feed pet
-    11.pet pet
-    12.bathe pet
-    13.train pet speed
-    14.train pet strength
-    15.visit the vet
-    16.go to sleep for the night
-    17.visit the shop
-    18.go to a strength show
-    19.go to a speed show
-    
-    """))
+    days=0
+    for i in range (95):
+        while days < 365:
+            action=int(input("""what action would you like to perform?
+            1.check pet hunger
+            2.check pet energy level
+            3.check pet affection level
+            4.check pet hp
+            5.check pet cleanlieness
+            6.check pet speed
+            7.check pet strength
+            8.check pet size
+            9.check pet age
+            10.feed pet
+            11.pet pet
+            12.bathe pet
+            13.train pet speed
+            14.train pet strength
+            15.visit the vet
+            16.go to sleep for the night
+            17.visit the shop
+            18.go to a strength show
+            19.go to a speed show
+            20.send them to the assembly line
+            """))
+            if action == 1:
+                    print("hunger=")
+                    print(pet.hungry)
+            elif action == 2:
+                    print("energy=")
+                    print(pet.energy)
+            elif action == 3:
+                    print(pet.love)
+                    print("love=")
+            elif action == 4:
+                    print("hp=")
+                    print(pet.hp)
+            elif action == 5:
+                    print("cleanlieness=")
+                    print(pet.clean)
+            elif action == 6:
+                    print("speed=")
+                    print(pet.speed)
+            elif action == 7:
+                    print("strength=")
+                    print(pet.strength)
+            elif action == 8:
+                    print("size=")
+                    print(pet.size)
+            elif action == 9:
+                    print("age=")
+                    print(pet.age)
+            elif action == 10:
+                    print("hunger decreased!")
+                    h=h-5
+                    e=e-1
+                    c=c-1
+                    l=l+2
+            elif action == 11:
+                    print("affection increased!")
+                    l=l+5
+                    e=e-1
+                    h=h+1
+                    c=c-1
+            elif action == 12:
+                    print("cleanlieness increased!")
+                    c=c+5
+                    e=e-1
+                    h=h+1
+                    l=l-2
+            elif action == 13:
+                    print("speed increased!")
+                    sp=sp+5
+                    e=e-3
+                    h=h+2
+                    c=c-2
+                    l=l+1
+            elif action == 14:
+                    print("strength increased!")
+                    st=st+5
+                    e=e-3
+                    h=h+2
+                    c=c-2
+                    l=l+1
+            elif action == 15:
+                    "this is visiting the vet i need to figure out what to do about this"
+            elif action == 16:
+                    print("Goodnight! (energy restored)")
+                    a=a+1
+                    e=e+5
+                    h=h+3
+                    c=c-1
+                    days = days+1
+            pet.age = ag
+            if c <= 3:
+                    pet.clean = "low"
+            elif c >3 and c <7:
+                    pet.clean = "medium"
+            elif c <= 0:
+                    pet.clean = "critically low (stinky boy)(will start losing hp)"
+                    health=health-3
+            elif c >=7:
+                    pet.clean = "high"
+            elif c >10:
+                    pet.clean = "stunningly clean"
+            if h <= 3 and h > 0:
+                    pet.hungry = "low"
+            elif h >3 and h <7:
+                    pet.hungry = "medium"
+            elif h <= 0:
+                    pet.hungry = "stuffed"
+            elif h >=7 and h < 10:
+                    pet.hungry = "high"
+            elif h >=10:
+                    pet.hungry = "starving (losing hp)"
+                    health=health-3
+            pet.hp = health
+            if e <= 3 and e > 0:
+                    pet.energy = "low"
+            elif e >3 and e <7:
+                    pet.energy = "medium"
+            elif e <= 0:
+                    pet.energy = "critically low (sleepy boy)(will start losing hp)"
+                    health=health-3
+            elif e >=7 and e <10:
+                    pet.energy = "high"
+            elif e >=10:
+                    pet.energy = "bright eyed and bushy tailed"
+            if l <= 3 and l > 0:
+                    pet.love = "low"
+            elif l >3 and l <7:
+                    pet.love = "medium"
+            elif l <= 0:
+                    pet.love = "in love"
+            elif l >=7 and l < 10:
+                    pet.love = "high"
+            elif l >=10:
+                    pet.love = "hates you"
+            pet.hp = health
+        if days == 365:
+              ag=ag+1
+              pet.age=ag
 basic_action()
 of_age()

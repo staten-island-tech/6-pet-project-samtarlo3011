@@ -1,3 +1,4 @@
+
 import time
 import random
 class pet:
@@ -151,7 +152,7 @@ def basic_action():
             c=c-2
             l=l+1
         elif action == 15:
-            "this is visiting the vet i need to figure out what to do about this"
+            print("this is visiting the vet i need to figure out what to do about this")
         elif action == 16:
             print("Goodnight! (energy restored)")
             a=a+1
@@ -179,7 +180,7 @@ def basic_action():
         elif c >3 and c <7:
             pet.clean = "medium"
         elif c <= 0:
-            pet.clean = "critically low (stinky boy)(will start losing hp)"
+            pet.clean = "critically low (will start losing hp)"
             health=health-3
         elif c >=7:
             pet.clean = "high"
@@ -233,7 +234,7 @@ def of_age():
     global a
     global ag
     global health
-    print("Congratulations!! You have successfully kept your pet",(name),"alive for five whole years! This means that you have unlocked some brand new activities. You can now access the shop to buy new pets. You can take your pets to shows to test thier strength and speed against others or you could force your pets to work in factories! The world is your oyster! Have fun!") 
+    print("Congratulations!! You have successfully kept your pet",(name),"alive for five whole years! This means that you have unlocked some brand new activities. You can now access the shop to buy new pets. You can take your pets to competitions to test thier strength and speed against others or you could force your pets to work in factories! The world is your oyster! Have fun!") 
     days=0
     for i in range (95):
         while days < 365:
@@ -255,8 +256,8 @@ def of_age():
             15.visit the vet
             16.go to sleep for the night
             17.visit the shop
-            18.go to a strength show
-            19.go to a speed show
+            18.go to a strength competition
+            19.go to a speed competiton
             20.send them to the assembly line
             """))
             if action == 1:
@@ -319,7 +320,7 @@ def of_age():
                     c=c-2
                     l=l+1
             elif action == 15:
-                    "this is visiting the vet i need to figure out what to do about this"
+                    print("this is visiting the vet i need to figure out what to do about this")
             elif action == 16:
                     print("Goodnight! (energy restored)")
                     a=a+1
@@ -333,7 +334,7 @@ def of_age():
             elif c >3 and c <7:
                     pet.clean = "medium"
             elif c <= 0:
-                    pet.clean = "critically low (stinky boy)(will start losing hp)"
+                    pet.clean = "critically low (will start losing hp)"
                     health=health-3
             elif c >=7:
                     pet.clean = "high"
@@ -376,5 +377,11 @@ def of_age():
         if days == 365:
               ag=ag+1
               pet.age=ag
+""" pet_store=[
+      {"species":"Dog", 
+       
+]
+def pet_shop():
+       """
 basic_action()
 of_age()

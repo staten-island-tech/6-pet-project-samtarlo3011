@@ -220,6 +220,8 @@ def basic_action():
         elif l >=10:
             pet.love = "hates you"
         pet.hp = health
+        if pet.hp == 0:
+              print("oh no... died")
 
 
 
@@ -379,7 +381,7 @@ def of_age():
               pet.age=ag
 """ pet_store=[
       {"species":"Dog", 
-       
+       "gender":
 ]
 def pet_shop():
        """

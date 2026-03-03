@@ -256,11 +256,11 @@ def of_age():
             13.train pet speed
             14.train pet strength
             15.visit the vet
-            16.go to sleep for the night
-            17.visit the shop
-            18.go to a strength competition
-            19.go to a speed competiton
-            20.send them to the assembly line
+            16.visit the shop
+            17.go to a strength competition
+            18.go to a speed competiton
+            19.send them to the assembly line
+            20.go to sleep for the night
             """))
             if action == 1:
                     print("hunger=")
@@ -323,13 +323,22 @@ def of_age():
                     l=l+1
             elif action == 15:
                     print("this is visiting the vet i need to figure out what to do about this")
-            elif action == 16:
+            elif action == 20:
                     print("Goodnight! (energy restored)")
                     a=a+1
                     e=e+5
                     h=h+3
                     c=c-1
                     days = days+1
+            elif action == 17:
+                  e1 = random.randint(st-20,st+20)
+                  e2 = random.randint(st-20,st+20)
+                  e3 = random.randint(st-20,st+20)
+                  e4 = random.randint(st-20,st+20)
+                  e5 = random.randint(st-20,st+20)
+                  list=[e1,e2,e3,e4,e5,st]
+                  standings=sorted(list)
+                  print(standings)
             pet.age = ag
             if c <= 3:
                     pet.clean = "low"

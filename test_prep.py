@@ -29,10 +29,19 @@ def E_F():
         print("prolly french")
 
 def honi():
-    text=input("enter text here ")
+    text=input("enter text ")
+    honi=["H","h","O","o","N","n","I","i"]
+    a=0
+    b=1
+    c=0
     for i in text:
-        print(i)
-        if i != "H" and i != "h" and i != "O" and i != "o" and i != "N" and i != "n" and i != "I" and i != "i":
-            i= "n/a"
-    print (text)
+        if i == honi[a] or i == honi[b]:
+            a+=2
+            b+=2
+            c+=0.25
+        if c.is_integer():
+            a=0
+            b=1
+    print(int(c))
 honi()
+

@@ -2,7 +2,7 @@
 import time
 import random
 class pet:
-    def __init__(self, hungry, clean, energy, gender, species, hp, love, production, speed, strength, size, age,name):
+    def __init__(self, hungry, clean, energy, gender, species, hp, love, production, speed, strength, size, age,name,money):
         self.hp = hp 
         self.hungry = hungry
         self.clean = clean
@@ -16,7 +16,10 @@ class pet:
         self.size = size 
         self.age = age 
         self.name = name
+        self.money = money
 health=50
+m=100
+pet.money = m
 pet.hp = health
 pet.hungry = "low"
 h=0
@@ -236,6 +239,7 @@ def of_age():
     global a
     global ag
     global health
+    global m 
     print("Congratulations!! You have successfully kept your pet",(name),"alive for five whole years! This means that you have unlocked some brand new activities. You can now access the shop to buy new pets. You can take your pets to competitions to test thier strength and speed against others or you could force your pets to work in factories! The world is your oyster! Have fun!") 
     days=0
     for i in range (95):
@@ -250,17 +254,18 @@ def of_age():
             7.check pet strength
             8.check pet size
             9.check pet age
-            10.feed pet
-            11.pet pet
-            12.bathe pet
-            13.train pet speed
-            14.train pet strength
-            15.visit the vet
-            16.visit the shop
-            17.go to a strength competition
-            18.go to a speed competiton
-            19.send them to the assembly line
-            20.go to sleep for the night
+            10.check wallet
+            11.feed pet
+            12.pet pet
+            13.bathe pet
+            14.train pet speed
+            15.train pet strength
+            16.visit the vet
+            17.visit the shop
+            18.go to a strength competition
+            19.go to a speed competiton
+            20.send them to the assembly line
+            21.go to sleep for the night
             """))
             if action == 1:
                     print("hunger=")
@@ -289,56 +294,63 @@ def of_age():
             elif action == 9:
                     print("age=")
                     print(pet.age)
-            elif action == 10:
+            elif action == 11:
                     print("hunger decreased!")
                     h=h-5
                     e=e-1
                     c=c-1
                     l=l+2
-            elif action == 11:
+            elif action == 12:
                     print("affection increased!")
                     l=l+5
                     e=e-1
                     h=h+1
                     c=c-1
-            elif action == 12:
+            elif action == 13:
                     print("cleanlieness increased!")
                     c=c+5
                     e=e-1
                     h=h+1
                     l=l-2
-            elif action == 13:
+            elif action == 14:
                     print("speed increased!")
                     sp=sp+5
                     e=e-3
                     h=h+2
                     c=c-2
                     l=l+1
-            elif action == 14:
+            elif action == 15:
                     print("strength increased!")
                     st=st+5
                     e=e-3
                     h=h+2
                     c=c-2
                     l=l+1
-            elif action == 15:
+            elif action == 16:
                     print("this is visiting the vet i need to figure out what to do about this")
-            elif action == 20:
+            elif action == 21:
                     print("Goodnight! (energy restored)")
                     a=a+1
                     e=e+5
                     h=h+3
                     c=c-1
                     days = days+1
-            elif action == 17:
-                  e1 = random.randint(st-20,st+20)
-                  e2 = random.randint(st-20,st+20)
-                  e3 = random.randint(st-20,st+20)
-                  e4 = random.randint(st-20,st+20)
-                  e5 = random.randint(st-20,st+20)
+            elif action == 18:
+                  e1 = random.randint(st-20,st)
+                  e2 = random.randint(st-20,st)
+                  e3 = random.randint(st-20,st)
+                  e4 = random.randint(st-20,st)
+                  e5 = random.randint(st-20,st)
                   list=[e1,e2,e3,e4,e5,st]
                   standings=sorted(list)
                   print(standings)
+                  if standings[-1] is st:
+                        print ("you win congrats")
+                        m=m+15
+                  else:
+                        print("You lose haha")
+                        m=m-15
+            time.sleep(3)
             pet.age = ag
             if c <= 3:
                     pet.clean = "low"
@@ -388,11 +400,13 @@ def of_age():
         if days == 365:
               ag=ag+1
               pet.age=ag
+    pet.money = m 
 """ pet_store=[
       {"species":"Dog", 
        "gender":
 ]
 def pet_shop():
        """
+
 basic_action()
 of_age()

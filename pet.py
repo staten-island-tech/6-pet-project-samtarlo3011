@@ -237,10 +237,7 @@ class pet:
         print("Congratulations!! You have successfully kept your pet",(name),"alive for five whole years! This means that you have unlocked some brand new activities. You can now access the shop to buy new pets. You can take your pets to competitions to test thier strength and speed against others or you could force your pets to work in factories! The world is your oyster! Have fun!") 
         days=0
         for i in range (95):
-            for i in pets:
-                  x=input("which pet would you like to access")
-                  if x == i:
-                        whichpet = 
+
             while days < 365:
                 action=int(input("""what action would you like to perform?
                 1.check pet hunger
@@ -417,3 +414,4 @@ class pet:
                 pet1.age=ag
         pet1.money = m 
 pet1=pet.New_Pet()
+print(pet1.hp)

@@ -1,11 +1,13 @@
-class hero:
-    def __init__(self,hp):
-        self.hp = hp
-    def new_hero():
-        james=hero(1000)
-    def die():
-        for i in range(300):
-            print(james.hp,"youre dying")
+class pet:
+    def __init__(self, hungry,):
+        self.hungry = hungry
+    def newP():
+        hungry=100
+        return pet(hungry)
+    def starve(self):
+        for i in range(100):
+            print(self.hungry)
+            self.hungry = self.hungry -1
 
-james = hero.new_hero()
-hero.die()
+james = pet.newP()
+james.starve()

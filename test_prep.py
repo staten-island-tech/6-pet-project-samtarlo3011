@@ -31,8 +31,8 @@ def E_F():
 def honi():
     text=input("enter text ")
     honi=["H","h","O","o","N","n","I","i"]
-    a=0
-    b=1
+    first=0
+    second=1
     c=0
     for i in text:
         if i == honi[a] or i == honi[b]:
@@ -43,5 +43,15 @@ def honi():
             a=0
             b=1
     print(int(c))
-honi()
+
+def internet(Mb, N, months: list[int]):
+    a=0
+    avail=[Mb]
+    for i in range(N):
+        NextM = avail[a] - months[a]
+        NextM+=Mb
+        avail.append (NextM)
+        a+=1
+    return (NextM)
+print(internet(10, 3, [4,5,6]))
 

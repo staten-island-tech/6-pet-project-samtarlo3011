@@ -3,7 +3,7 @@ import time
 import random
 
 class pet:
-    def __init__(self, hungry, clean, energy, gender, species, hp, love, production, speed, strength, size, age,name,money):
+    def __init__(self, hungry, clean, energy, gender, species, hp, love, production, speed, strength, size, age,name,money,h,c,e,l,a,ag,):
         self.hp = hp 
         self.hungry = hungry
         self.clean = clean
@@ -18,6 +18,12 @@ class pet:
         self.age = age 
         self.name = name
         self.money = money
+        self.h=h
+        self.c=c
+        self.e=e
+        self.l=l
+        self.a=a
+        self.ag=ag
     def New_Pet():
         global pets
         h=0
@@ -35,7 +41,6 @@ class pet:
             gender = "male"
         else:
             gender = "female"
-        health=50
         want = int(input("""would you like a " 
         "1:Dog"
         "2:Cat"
@@ -54,8 +59,7 @@ class pet:
         elif want == 5:
             species = "Bird"
         money=100
-        health=100
-        hp=health
+        hp=50
         hungry="low"
         clean="clean"
         energy="high"
@@ -69,9 +73,10 @@ class pet:
 """)
         pets=[]
         pets.append(name)
-        return pet(hungry, clean, energy, gender, species, hp, love, production, speed, strength, size, age,name,money)
-    def basic_action():
+        return pet(hungry, clean, energy, gender, species, hp, love, production, speed, strength, size, age,name,money,h,c,e,l,a,ag)
+    def basic_action(self):
         while pet1.age<5:
+            self.die()
             action=int(input("""what action would you like to perform?
         1.check pet hunger
         2.check pet energy level
@@ -92,72 +97,37 @@ class pet:
         """))
             abcd=0
             if action == 1:
-                print("hunger=")
-                print(pet1.hungry)
+                self.c_hung()
             elif action == 2:
-                print("energy=")
-                print(pet1.energy)
+                self.c_ene()
             elif action == 3:
-                print(pet1.love)
-                print("love=")
+                self.c_love()
             elif action == 4:
-                print("hp=")
-                print(pet1.hp)
+                self.c_hp()
             elif action == 5:
-                print("cleanlieness=")
-                print(pet1.clean)
+                self.c_clean()
             elif action == 6:
-                print("speed=")
-                print(pet1.speed)
+                self.c_speed()
             elif action == 7:
-                print("strength=")
-                print(pet1.strength)
+                self.c_strength()
             elif action == 8:
-                print("size=")
-                print(pet1.size)
+                self.c_size()
             elif action == 9:
-                print("age=")
-                print(pet1.age)
+                self.c_age
             elif action == 10:
-                print("hunger decreased!")
-                h=h-5
-                e=e-1
-                c=c-1
-                l=l+2
+                self.feed()
             elif action == 11:
-                print("affection increased!")
-                l=l+5
-                e=e-1
-                h=h+1
-                c=c-1
+                self.pet()
             elif action == 12:
-                print("cleanlieness increased!")
-                c=c+5
-                e=e-1
-                h=h+1
-                l=l-2
+                self.bathe()
             elif action == 13:
-                print("speed increased!")
-                sp=sp+5
-                e=e-3
-                h=h+2
-                c=c-2
-                l=l+1
+                self.t_sp()
             elif action == 14:
-                print("strength increased!")
-                st=st+5
-                e=e-3
-                h=h+2
-                c=c-2
-                l=l+1
+                self.t_st()
             elif action == 15:
                 print("this is visiting the vet i need to figure out what to do about this")
             elif action == 16:
-                print("Goodnight! (energy restored)")
-                a=a+1
-                e=e+5
-                h=h+3
-                c=c-1
+                self.sleep()
             elif action == 17:
                 a = int(input("enter here "))
             time.sleep(3)
@@ -173,71 +143,12 @@ class pet:
             elif a >= 1825 and a <2190:
                 ag=5
             print (ag)
-            pet1.age = ag
-            if c <= 3:
-                pet1.clean = "low"
-            elif c >3 and c <7:
-                pet1.clean = "medium"
-            elif c <= 0:
-                pet1.clean = "critically low (will start losing hp)"
-                health=health-3
-            elif c >=7:
-                pet1.clean = "high"
-            elif c >10:
-                pet1.clean = "stunningly clean"
-            if h <= 3 and h > 0:
-                pet1.hungry = "low"
-            elif h >3 and h <7:
-                pet1.hungry = "medium"
-            elif h <= 0:
-                pet1.hungry = "stuffed"
-            elif h >=7 and h < 10:
-                pet1.hungry = "high"
-            elif h >=10:
-                pet1.hungry = "starving (losing hp)"
-                health=health-3
-            pet1.hp = health
-            if e <= 3 and e > 0:
-                pet1.energy = "low"
-            elif e >3 and e <7:
-                pet1.energy = "medium"
-            elif e <= 0:
-                pet1.energy = "critically low (sleepy boy)(will start losing hp)"
-                health=health-3
-            elif e >=7 and e <10:
-                pet1.energy = "high"
-            elif e >=10:
-                pet1.energy = "bright eyed and bushy tailed"
-            if l <= 3 and l > 0:
-                pet1.love = "low"
-            elif l >3 and l <7:
-                pet1.love = "medium"
-            elif l <= 0:
-                pet1.love = "in love"
-            elif l >=7 and l < 10:
-                pet1.love = "high"
-            elif l >=10:
-                pet1.love = "hates you"
-            pet1.hp = health
-            if pet1.hp == 0:
-                print("oh no... died")
-    def of_age():
-        global pets 
-        global name
-        global h
-        global c
-        global e
-        global l 
-        global sp
-        global st
-        global a
-        global ag
-        global health
-        global m 
-        print("Congratulations!! You have successfully kept your pet",(name),"alive for five whole years! This means that you have unlocked some brand new activities. You can now access the shop to buy new pets. You can take your pets to competitions to test thier strength and speed against others or you could force your pets to work in factories! The world is your oyster! Have fun!") 
+            self.age = ag
+    def of_age(self):
+        print("Congratulations!! You have successfully kept your pet",(self.name),"alive for five whole years! This means that you have unlocked some brand new activities. You can now access the shop to buy new pets. You can take your pets to competitions to test thier strength and speed against others or you could force your pets to work in factories! The world is your oyster! Have fun!") 
         days=0
+        time.sleep(3)
         for i in range (95):
-
             while days < 365:
                 action=int(input("""what action would you like to perform?
                 1.check pet hunger
@@ -262,156 +173,152 @@ class pet:
                 20.send them to the assembly line
                 21.go to sleep for the night
                 """))
-                if action == 1:
-                        print("hunger=")
-                        print(pet1.hungry)
-                elif action == 2:
-                        print("energy=")
-                        print(pet1.energy)
-                elif action == 3:
-                        print(pet1.love)
-                        print("love=")
-                elif action == 4:
-                        print("hp=")
-                        print(pet1.hp)
-                elif action == 5:
-                        print("cleanlieness=")
-                        print(pet1.clean)
-                elif action == 6:
-                        print("speed=")
-                        print(pet1.speed)
-                elif action == 7:
-                        print("strength=")
-                        print(pet1.strength)
-                elif action == 8:
-                        print("size=")
-                        print(pet1.size)
-                elif action == 9:
-                        print("age=")
-                        print(pet1.age)
-                elif action == 11:
-                        print("hunger decreased!")
-                        h=h-5
-                        e=e-1
-                        c=c-1
-                        l=l+2
-                elif action == 12:
-                        print("affection increased!")
-                        l=l+5
-                        e=e-1
-                        h=h+1
-                        c=c-1
-                elif action == 13:
-                        print("cleanlieness increased!")
-                        c=c+5
-                        e=e-1
-                        h=h+1
-                        l=l-2
-                elif action == 14:
-                        print("speed increased!")
-                        sp=sp+5
-                        e=e-3
-                        h=h+2
-                        c=c-2
-                        l=l+1
-                elif action == 15:
-                        print("strength increased!")
-                        st=st+5
-                        e=e-3
-                        h=h+2
-                        c=c-2
-                        l=l+1
-                elif action == 16:
-                        print("this is visiting the vet i need to figure out what to do about this")
-                elif action == 21:
-                        print("Goodnight! (energy restored)")
-                        a=a+1
-                        e=e+5
-                        h=h+3
-                        c=c-1
-                        days = days+1
-                elif action == 19:
-                    e1 = random.randint(sp-20,sp+20)
-                    e2 = random.randint(sp-20,sp+20)
-                    e3 = random.randint(sp-20,sp+20)
-                    e4 = random.randint(sp-20,sp+20)
-                    e5 = random.randint(sp-20,sp+20)
-                    list=[e1,e2,e3,e4,e5,sp]
-                    standings=sorted(list)
-                    if standings[-1] is sp:
-                            print ("you win congrats")
-                            m=m+15
-                    elif standings[-1] is sp and standings[-1] == standings[-2]:
-                            print("Its a tie!")
-                    else:
-                            print("You lose haha")
-                            m=m-15
-                elif action == 18:
-                    e1 = random.randint(st-20,st+20)
-                    e2 = random.randint(st-20,st+20)
-                    e3 = random.randint(st-20,st+20)
-                    e4 = random.randint(st-20,st+20)
-                    e5 = random.randint(st-20,st+20)
-                    list=[e1,e2,e3,e4,e5,st]
-                    standings=sorted(list)
-                    if standings[-1] is st:
-                            print ("you win congrats")
-                            m=m+15
-                    elif standings[-1] is st and standings[-1] == standings[-2]:
-                            print("Its a tie!")
-                    else:
-                            print("You lose haha")
-                            m=m-15
-                time.sleep(3)
-                pet1.age = ag
-                if c <= 3:
-                        pet1.clean = "low"
-                elif c >3 and c <7:
-                        pet1.clean = "medium"
-                elif c <= 0:
-                        pet1.clean = "critically low (will start losing hp)"
-                        health=health-3
-                elif c >=7:
-                        pet1.clean = "high"
-                elif c >10:
-                        pet1.clean = "stunningly clean"
-                if h <= 3 and h > 0:
-                        pet1.hungry = "low"
-                elif h >3 and h <7:
-                        pet1.hungry = "medium"
-                elif h <= 0:
-                        pet1.hungry = "stuffed"
-                elif h >=7 and h < 10:
-                        pet1.hungry = "high"
-                elif h >=10:
-                        pet1.hungry = "starving (losing hp)"
-                        health=health-3
-                pet1.hp = health
-                if e <= 3 and e > 0:
-                        pet1.energy = "low"
-                elif e >3 and e <7:
-                        pet1.energy = "medium"
-                elif e <= 0:
-                        pet1.energy = "critically low (sleepy boy)(will start losing hp)"
-                        health=health-3
-                elif e >=7 and e <10:
-                        pet1.energy = "high"
-                elif e >=10:
-                        pet1.energy = "bright eyed and bushy tailed"
-                if l <= 3 and l > 0:
-                        pet1.love = "low"
-                elif l >3 and l <7:
-                        pet1.love = "medium"
-                elif l <= 0:
-                        pet1.love = "in love"
-                elif l >=7 and l < 10:
-                        pet1.love = "high"
-                elif l >=10:
-                        pet1.love = "hates you"
-                pet1.hp = health
-            if days == 365:
-                ag=ag+1
-                pet1.age=ag
-        pet1.money = m 
+    def die(self):
+        if self.hungry == "starving (losing)" or self.energy == "critically low (sleepy boy)(will start losing hp)" or self.clean == "critically low (will start losing hp)":
+            self.hp-=3
+        if self.hp == 0:
+              print("Whoopsies, dead")
+    def c_hung(self):
+          print ("hunger=",self.hungry)
+    def c_ene(self):
+          print("energy=",self.energy)
+    def c_love(self):
+          print("affection=", self.love)
+    def c_hp(self):
+          print("health=", self.hp)
+    def c_clean(self):
+          print("cleanlieness=",self.clean)
+    def c_speed(self):
+          print("speed=",self.speed)
+    def c_strength(self):
+          print("strength=",self.strength)
+    def c_size(self):
+          print ("size=",self.size)
+    def c_age(self):
+          print("age=",self.age)
+    def c_wallet(self):
+          print("money=",self.money)
+    def feed(self):
+        print("hunger decreased!")
+        self.h=self.h-5
+        self.e=self.e-1
+        self.c=self.c-1
+        self.l=self.l+2
+    def pet(self):
+        print("affection increased!")
+        self.l=self.l+5
+        self.e=self.e-1
+        self.h=self.h+1
+        self.c=self.c-1
+    def ch_stats(self):
+        if self.h <= 3 and self.h > 0:
+            self.hungry = "low"
+        elif self.h >3 and self.h <7:
+            self.hungry = "medium"
+        elif self.h <= 0:
+            self.hungry = "stuffed"
+        elif self.h >=7 and self.h < 10:
+            self.hungry = "high"
+        elif self.h >=10:
+            self.hungry = "starving (losing hp)"
+            health=health-3
+        if self.c <= 3:
+            self.clean = "low"
+        elif self.c >3 and self.c <7:
+            self.clean = "medium"
+        elif self.c <= 0:
+            self.clean = "critically low (will start losing hp)"
+            health=health-3
+        elif self.c >=7:
+            self.clean = "high"
+        elif self.c >10:
+            self.clean = "stunningly clean"
+        if self.e <= 3 and self.e > 0:
+            self.energy = "low"
+        elif self.e >3 and self.e <7:
+            self.energy = "medium"
+        elif self.e <= 0:
+            self.energy = "critically low (sleepy boy)(will start losing hp)"
+            health=health-3
+        elif self.e >=7 and self.e <10:
+            self.energy = "high"
+        elif self.e >=10:
+            self.energy = "bright eyed and bushy tailed"
+        if self.l <= 3 and self.l > 0:
+            self.love = "low"
+        elif self.l >3 and self.l <7:
+            self.love = "medium"
+        elif self.l <= 0:
+            self.love = "in love"
+        elif self.l >=7 and self.l < 10:
+            self.love = "high"
+        elif self.l >=10:
+            self.love = "hates you"
+    def bathe(self):
+        print("cleanlieness increased!")
+        self.c=self.c+5
+        self.e=self.e-1
+        self.h=self.h+1
+        self.l=self.l-2
+    def t_sp(self):
+        print("speed increased!")
+        self.sp=self.sp+5
+        self.e=self.e-3
+        self.h=self.h+2
+        self.c=self.c-2
+        self.l=self.l+1
+    def t_st(self):
+        print("strength increased!")
+        self.st=self.st+5
+        self.e=self.e-3
+        self.h=self.h+2
+        self.c=self.c-2
+        self.l=self.l+1
+    def sleep(self):
+        print("Goodnight! (energy restored)")
+        self.a=self.a+1
+        self.e=self.e+5
+        self.h=self.h+3
+        self.c=self.c-1
+    def st_comp(self):
+        e1 = random.randint(self.st-20,self.st+20)
+        e2 = random.randint(self.st-20,self.st+20)
+        e3 = random.randint(self.st-20,self.st+20)
+        e4 = random.randint(self.st-20,self.st+20)
+        e5 = random.randint(self.st-20,self.st+20)
+        list=[e1,e2,e3,e4,e5,st]
+        standings=sorted(list)
+        if standings[-1] is self.st:
+            print ("you win congrats")
+            m=m+15
+        elif standings[-1] is self.st and standings[-1] == standings[-2]:
+            print("Its a tie!")
+        else:
+            print("You lose haha")
+            m=m-15
+    def sp_comp(self):
+        e1 = random.randint(self.sp-20,self.sp+20)
+        e2 = random.randint(self.sp-20,self.sp+20)
+        e3 = random.randint(self.sp-20,self.sp+20)
+        e4 = random.randint(self.sp-20,self.sp+20)
+        e5 = random.randint(self.sp-20,self.sp+20)
+        list=[e1,e2,e3,e4,e5,self.sp]
+        standings=sorted(list)
+        if standings[-1] is self.sp:
+            print ("you win congrats")
+            m=m+15
+        elif standings[-1] is self.sp and standings[-1] == standings[-2]:
+            print("Its a tie!")
+        else:
+            print("You lose haha")
+            m=m-15
+    def age(self):
+        if self.a == 360:
+            self.ag+=1
+            self.a=0
+
+
+""" 16.visit the vet
+                17.visit the shop
+                20.send them to the assembly line """
 pet1=pet.New_Pet()
-print(pet1.hp)

@@ -53,5 +53,33 @@ def internet(Mb, N, months: list[int]):
         avail.append (NextM)
         a+=1
     return (NextM)
-print(internet(10, 3, [4,5,6]))
 
+def poor_ppl(q,m1,m2,m3):
+    PC=0
+    while q>0:
+        m1+=1
+        q-=1
+        PC+=1
+        if m1 == 35:
+            q+=30
+            m1=0
+        if q == 0:
+            return(PC)
+        m2+=1
+        q-=1
+        PC+=1
+        if m2 == 100:
+            q+=60
+            m2=0
+        if q == 0:
+            return(PC)
+        m3+=1
+        q-=1
+        PC+=1
+        if m3 == 10:
+            q+=9
+            m3=0
+        if q == 0:
+            return(PC)
+    print("she played", PC , "times before going broke")
+print(poor_ppl(48,3,10,4))

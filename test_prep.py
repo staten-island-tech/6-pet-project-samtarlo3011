@@ -81,5 +81,19 @@ def poor_ppl(q,m1,m2,m3):
             m3=0
         if q == 0:
             return(PC)
-    print("she played", PC , "times before going broke")
-print(poor_ppl(48,3,10,4))
+
+def Village(N):
+    y = []
+    for i in range(N):
+        x= int(input("loc of next vill"))
+        y.append(x)
+        villages = sorted(y)
+    villageN = []
+    z=0
+    for i in villages:
+        villageN.append(((villages[z+1]-villages[z])/2)+((villages[z+2]-villages[z+1])/2))
+        final = sorted(villageN)
+        z+=1
+    return final[1]
+print(Village(5))
+"""     # z=(((villages[1]-villages[0])/2)+((villages[2]-villages[1])/2)) """

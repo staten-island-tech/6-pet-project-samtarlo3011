@@ -146,33 +146,79 @@ class pet:
             self.age = ag
     def of_age(self):
         print("Congratulations!! You have successfully kept your pet",(self.name),"alive for five whole years! This means that you have unlocked some brand new activities. You can now access the shop to buy new pets. You can take your pets to competitions to test thier strength and speed against others or you could force your pets to work in factories! The world is your oyster! Have fun!") 
-        days=0
         time.sleep(3)
         for i in range (95):
-            while days < 365:
-                action=int(input("""what action would you like to perform?
-                1.check pet hunger
-                2.check pet energy level
-                3.check pet affection level
-                4.check pet hp
-                5.check pet cleanlieness
-                6.check pet speed
-                7.check pet strength
-                8.check pet size
-                9.check pet age
-                10.check wallet
-                11.feed pet
-                12.pet pet
-                13.bathe pet
-                14.train pet speed
-                15.train pet strength
-                16.visit the vet
-                17.visit the shop
-                18.go to a strength competition
-                19.go to a speed competiton
-                20.send them to the assembly line
-                21.go to sleep for the night
+            self.die()
+            self.age()
+            self.ch_stats()
+            action=int(input("""
+what action would you like to perform?
+1.check pet hunger
+2.check pet energy level
+3.check pet affection level
+4.check pet hp
+5.check pet cleanlieness
+6.check pet speed
+7.check pet strength
+8.check pet size
+9.check pet age
+10.check wallet
+11.feed pet
+12.pet pet
+13.bathe pet
+14.train pet speed
+15.train pet strength
+16.visit the vet
+17.visit the shop
+18.go to a strength competition
+19.go to a speed competiton
+20.send them to the assembly line
+21.go to sleep for the night
                 """))
+            if action == 1:
+                self.c_hung()
+            elif action == 2:
+                self.c_ene()
+            elif action == 3:
+                self.c_love()
+            elif action == 4:
+                self.c_hp()
+            elif action == 5:
+                self.c_clean()
+            elif action == 6:
+                self.c_speed()
+            elif action == 7:
+                self.c_strength()
+            elif action == 8:
+                self.c_size()
+            elif action == 9:
+                self.c_age()
+            elif action == 10:
+                self.c_wallet()
+            elif action == 11:
+                self.feed()
+            elif action == 12:
+                self.pet()
+            elif action == 13:
+                self.bathe()
+            elif action == 14:
+                self.t_sp()
+            elif action == 15:
+                self.t_st()
+            elif action == 16:
+                print("vet idk")
+            elif action == 17:
+                print("shop idk")
+            elif action == 18:
+                self.st_comp()
+            elif action == 19:
+                self.sp_comp()
+            elif action == 20:
+                print("factory idk")
+            elif action == 21:
+                self.sleep()
+            else:
+                print ("no such action found")
     def die(self):
         if self.hungry == "starving (losing)" or self.energy == "critically low (sleepy boy)(will start losing hp)" or self.clean == "critically low (will start losing hp)":
             self.hp-=3
@@ -316,9 +362,11 @@ class pet:
         if self.a == 360:
             self.ag+=1
             self.a=0
-
-
-""" 16.visit the vet
-                17.visit the shop
-                20.send them to the assembly line """
+def choose_pet():
+    choice = input("which pet would you like to play as?")
+    if choice in pets:
+        choice.basic_action()
+    else:
+        print("Sorry no such pet found")
 pet1=pet.New_Pet()
+choose_pet()

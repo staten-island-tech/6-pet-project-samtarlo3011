@@ -88,12 +88,17 @@ def Village(N):
         x= int(input("loc of next vill"))
         y.append(x)
         villages = sorted(y)
+    z=1
     villageN = []
-    z=0
-    for i in villages:
-        villageN.append(((villages[z+1]-villages[z])/2)+((villages[z+2]-villages[z+1])/2))
-        final = sorted(villageN)
+    for i in villages[:-1]:
+        villageN.append ((villages[z]-i)/2)
         z+=1
-    return final[1]
+    final =[]
+    z=1
+    for i in villageN[:-1]:
+        final.append(villageN[z]+i)
+        z+=1
+        print (final)
+        real=sorted(final)
+    return real[0]
 print(Village(5))
-"""     # z=(((villages[1]-villages[0])/2)+((villages[2]-villages[1])/2)) """

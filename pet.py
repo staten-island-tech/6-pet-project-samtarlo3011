@@ -131,7 +131,6 @@ class pet:
             elif action == 17:
                 a = int(input("enter here "))
             time.sleep(3)
-            print (a)
             if a >= 365 and a < 730:
                 ag=1
             elif a >= 730 and a < 1095:
@@ -362,11 +361,5 @@ what action would you like to perform?
         if self.a == 360:
             self.ag+=1
             self.a=0
-def choose_pet():
-    choice = input("which pet would you like to play as?")
-    if choice in pets:
-        choice.basic_action()
-    else:
-        print("Sorry no such pet found")
 pet1=pet.New_Pet()
-choose_pet()
+pet1.basic_action()

@@ -1,7 +1,8 @@
 
 import time
 import random
-
+pets=[]
+petsN=[]
 class pet:
     def __init__(self, hungry, clean, energy, gender, species, hp, love, production, speed, strength, size, age,name,money,h,c,e,l,a,ag,):
         self.hp = hp 
@@ -26,6 +27,7 @@ class pet:
         self.ag=ag
     def New_Pet():
         global pets
+        global petsN
         h=0
         c=10
         e=10
@@ -35,7 +37,6 @@ class pet:
         si = random.randint(1,10)
         a=0
         ag=0
-
         g=random.randint(1,2)
         if g == 1:
             gender = "male"
@@ -71,12 +72,14 @@ class pet:
         production=0
         name=input("""name your pet!
 """)
-        pets=[]
-        pets.append(name)
+        petsN.append(name)
+        pets.append(pet(hungry, clean, energy, gender, species, hp, love, production, speed, strength, size, age,name,money,h,c,e,l,a,ag))
         return pet(hungry, clean, energy, gender, species, hp, love, production, speed, strength, size, age,name,money,h,c,e,l,a,ag)
     def basic_action(self):
         while pet1.age<5:
+            self.ch_stats()
             self.die()
+            self.age
             action=int(input("""what action would you like to perform?
         1.check pet hunger
         2.check pet energy level
@@ -94,8 +97,8 @@ class pet:
         14.train pet strength
         15.visit the vet
         16.go to sleep for the night
+        17.switch pets
         """))
-            abcd=0
             if action == 1:
                 self.c_hung()
             elif action == 2:
@@ -128,8 +131,10 @@ class pet:
                 print("this is visiting the vet i need to figure out what to do about this")
             elif action == 16:
                 self.sleep()
-            elif action == 17:
+            elif action == 18:
                 a = int(input("enter here "))
+            elif action == 17:
+                choose_petB()
             time.sleep(3)
             if a >= 365 and a < 730:
                 ag=1
@@ -141,7 +146,6 @@ class pet:
                 ag=4
             elif a >= 1825 and a <2190:
                 ag=5
-            print (ag)
             self.age = ag
     def of_age(self):
         print("Congratulations!! You have successfully kept your pet",(self.name),"alive for five whole years! This means that you have unlocked some brand new activities. You can now access the shop to buy new pets. You can take your pets to competitions to test thier strength and speed against others or you could force your pets to work in factories! The world is your oyster! Have fun!") 
@@ -173,6 +177,7 @@ what action would you like to perform?
 19.go to a speed competiton
 20.send them to the assembly line
 21.go to sleep for the night
+22.change pets
                 """))
             if action == 1:
                 self.c_hung()
@@ -216,6 +221,8 @@ what action would you like to perform?
                 print("factory idk")
             elif action == 21:
                 self.sleep()
+            elif action == 22:
+                choose_petO()
             else:
                 print ("no such action found")
     def die(self):
@@ -361,5 +368,23 @@ what action would you like to perform?
         if self.a == 360:
             self.ag+=1
             self.a=0
+def choose_petB():
+    choice= input("which pet would you like to access? ")
+    if choice not in petsN:
+        print("no pet found")
+        choose_petB()
+    else:
+        for i in pets:
+            if choice == i.name:
+                i.basic_action()
+def choose_petO():
+    choice= input("which pet would you like to access? ")
+    if choice not in petsN:
+        print("no pet found")
+        choose_petO()
+    else:
+        for i in pets:
+            if choice == i.name:
+                i.of_age()
 pet1=pet.New_Pet()
 pet1.basic_action()

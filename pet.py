@@ -76,7 +76,7 @@ class pet:
         pets.append(pet(hungry, clean, energy, gender, species, hp, love, production, speed, strength, size, age,name,money,h,c,e,l,a,ag))
         return pet(hungry, clean, energy, gender, species, hp, love, production, speed, strength, size, age,name,money,h,c,e,l,a,ag)
     def basic_action(self):
-        while pet1.age<5:
+        while self.age<5:
             self.ch_stats()
             self.die()
             self.age
@@ -97,7 +97,6 @@ class pet:
         14.train pet strength
         15.visit the vet
         16.go to sleep for the night
-        17.switch pets
         """))
             if action == 1:
                 self.c_hung()
@@ -116,7 +115,7 @@ class pet:
             elif action == 8:
                 self.c_size()
             elif action == 9:
-                self.c_age
+                self.c_age()
             elif action == 10:
                 self.feed()
             elif action == 11:
@@ -133,28 +132,21 @@ class pet:
                 self.sleep()
             elif action == 18:
                 a = int(input("enter here "))
-            elif action == 17:
-                choose_petB()
+                if a >= 365 and a < 730:
+                    ag=1
+                elif a >= 730 and a < 1095:
+                    ag=2
+                elif a >= 1095 and a <1460:
+                    ag=3
+                elif a >= 1460 and a <1825:
+                    ag=4
+                elif a >= 1825 and a <2190:
+                    ag=5
+                self.age = ag
             time.sleep(3)
-            if a >= 365 and a < 730:
-                ag=1
-            elif a >= 730 and a < 1095:
-                ag=2
-            elif a >= 1095 and a <1460:
-                ag=3
-            elif a >= 1460 and a <1825:
-                ag=4
-            elif a >= 1825 and a <2190:
-                ag=5
-            self.age = ag
     def of_age(self):
-        print("Congratulations!! You have successfully kept your pet",(self.name),"alive for five whole years! This means that you have unlocked some brand new activities. You can now access the shop to buy new pets. You can take your pets to competitions to test thier strength and speed against others or you could force your pets to work in factories! The world is your oyster! Have fun!") 
         time.sleep(3)
-        for i in range (95):
-            self.die()
-            self.age()
-            self.ch_stats()
-            action=int(input("""
+        action=int(input("""
 what action would you like to perform?
 1.check pet hunger
 2.check pet energy level
@@ -177,54 +169,72 @@ what action would you like to perform?
 19.go to a speed competiton
 20.send them to the assembly line
 21.go to sleep for the night
-22.change pets
                 """))
-            if action == 1:
-                self.c_hung()
-            elif action == 2:
-                self.c_ene()
-            elif action == 3:
-                self.c_love()
-            elif action == 4:
-                self.c_hp()
-            elif action == 5:
-                self.c_clean()
-            elif action == 6:
-                self.c_speed()
-            elif action == 7:
-                self.c_strength()
-            elif action == 8:
-                self.c_size()
-            elif action == 9:
-                self.c_age()
-            elif action == 10:
-                self.c_wallet()
-            elif action == 11:
-                self.feed()
-            elif action == 12:
-                self.pet()
-            elif action == 13:
-                self.bathe()
-            elif action == 14:
-                self.t_sp()
-            elif action == 15:
-                self.t_st()
-            elif action == 16:
-                print("vet idk")
-            elif action == 17:
-                print("shop idk")
-            elif action == 18:
-                self.st_comp()
-            elif action == 19:
-                self.sp_comp()
-            elif action == 20:
-                print("factory idk")
-            elif action == 21:
-                self.sleep()
-            elif action == 22:
-                choose_petO()
-            else:
-                print ("no such action found")
+        if action == 1:
+            self.c_hung()
+            self.of_age()
+        elif action == 2:
+            self.c_ene()
+            self.of_age()
+        elif action == 3:
+            self.c_love()
+            self.of_age()
+        elif action == 4:
+            self.c_hp()
+            self.of_age()
+        elif action == 5:
+            self.c_clean()
+            self.of_age()
+        elif action == 6:
+            self.c_speed()
+            self.of_age()
+        elif action == 7:
+            self.c_strength()
+            self.of_age()
+        elif action == 8:
+            self.c_size()
+            self.of_age()
+        elif action == 9:
+            self.c_age()
+            self.of_age()
+        elif action == 10:
+            self.c_wallet()
+            self.of_age()
+        elif action == 11:
+            self.feed()
+            self.of_age()
+        elif action == 12:
+            self.pet()
+            self.of_age()
+        elif action == 13:
+            self.bathe()
+            self.of_age()
+        elif action == 14:
+            self.t_sp()
+            self.of_age()
+        elif action == 15:
+            self.t_st()
+            self.of_age()
+        elif action == 16:
+            print("vet idk")
+            self.of_age()
+        elif action == 17:
+            print("shop idk")
+            self.of_age()
+        elif action == 18:
+            self.st_comp()
+            self.of_age()
+        elif action == 19:
+            self.sp_comp()
+            self.of_age()
+        elif action == 20:
+            print("factory idk")
+            self.of_age()
+        elif action == 21:
+            self.sleep()
+        else:
+            print ("no such action found")
+
     def die(self):
         if self.hungry == "starving (losing)" or self.energy == "critically low (sleepy boy)(will start losing hp)" or self.clean == "critically low (will start losing hp)":
             self.hp-=3
@@ -314,14 +324,14 @@ what action would you like to perform?
         self.l=self.l-2
     def t_sp(self):
         print("speed increased!")
-        self.sp=self.sp+5
+        self.speed=self.speed+5
         self.e=self.e-3
         self.h=self.h+2
         self.c=self.c-2
         self.l=self.l+1
     def t_st(self):
         print("strength increased!")
-        self.st=self.st+5
+        self.strength=self.strength+5
         self.e=self.e-3
         self.h=self.h+2
         self.c=self.c-2
@@ -333,33 +343,33 @@ what action would you like to perform?
         self.h=self.h+3
         self.c=self.c-1
     def st_comp(self):
-        e1 = random.randint(self.st-20,self.st+20)
-        e2 = random.randint(self.st-20,self.st+20)
-        e3 = random.randint(self.st-20,self.st+20)
-        e4 = random.randint(self.st-20,self.st+20)
-        e5 = random.randint(self.st-20,self.st+20)
-        list=[e1,e2,e3,e4,e5,st]
+        e1 = random.randint(self.strength-20,self.strength+20)
+        e2 = random.randint(self.strength-20,self.strength+20)
+        e3 = random.randint(self.strength-20,self.strength+20)
+        e4 = random.randint(self.strength-20,self.strength+20)
+        e5 = random.randint(self.strength-20,self.strength+20)
+        list=[e1,e2,e3,e4,e5,self.strength]
         standings=sorted(list)
-        if standings[-1] is self.st:
+        if standings[-1] is self.strength:
             print ("you win congrats")
             m=m+15
-        elif standings[-1] is self.st and standings[-1] == standings[-2]:
+        elif standings[-1] is self.strength and standings[-1] == standings[-2]:
             print("Its a tie!")
         else:
             print("You lose haha")
             m=m-15
     def sp_comp(self):
-        e1 = random.randint(self.sp-20,self.sp+20)
-        e2 = random.randint(self.sp-20,self.sp+20)
-        e3 = random.randint(self.sp-20,self.sp+20)
-        e4 = random.randint(self.sp-20,self.sp+20)
-        e5 = random.randint(self.sp-20,self.sp+20)
-        list=[e1,e2,e3,e4,e5,self.sp]
+        e1 = random.randint(self.speed-20,self.speed+20)
+        e2 = random.randint(self.speed-20,self.speed+20)
+        e3 = random.randint(self.speed-20,self.speed+20)
+        e4 = random.randint(self.speed-20,self.speed+20)
+        e5 = random.randint(self.speed-20,self.speed+20)
+        list=[e1,e2,e3,e4,e5,self.speed]
         standings=sorted(list)
-        if standings[-1] is self.sp:
+        if standings[-1] is self.speed:
             print ("you win congrats")
             m=m+15
-        elif standings[-1] is self.sp and standings[-1] == standings[-2]:
+        elif standings[-1] is self.speed and standings[-1] == standings[-2]:
             print("Its a tie!")
         else:
             print("You lose haha")
@@ -368,23 +378,23 @@ what action would you like to perform?
         if self.a == 360:
             self.ag+=1
             self.a=0
-def choose_petB():
-    choice= input("which pet would you like to access? ")
-    if choice not in petsN:
-        print("no pet found")
-        choose_petB()
-    else:
-        for i in pets:
-            if choice == i.name:
-                i.basic_action()
+    def stats(self):
+        self.die()
+        self.age()
+        self.ch_stats()
 def choose_petO():
-    choice= input("which pet would you like to access? ")
-    if choice not in petsN:
-        print("no pet found")
-        choose_petO()
-    else:
-        for i in pets:
-            if choice == i.name:
-                i.of_age()
+    print("Congratulations!! You have successfully kept your pet",(pet1.name),"alive for five whole years! This means that you have unlocked some brand new activities. You can now access the shop to buy new pets. You can take your pets to competitions to test thier strength and speed against others or you could force your pets to work in factories! The world is your oyster! Have fun!") 
+    for i in range(95):
+        choice= input("which pet would you like to access? ")
+        if choice not in petsN:
+            print("no pet found")
+            choose_petO()
+        else:
+            for i in pets:
+                if choice == i.name:
+                    i.of_age()
+
 pet1=pet.New_Pet()
-pet1.basic_action()
+while pet1.age < 5:
+    pet1.basic_action()
+choose_petO()

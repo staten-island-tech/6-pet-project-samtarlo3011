@@ -79,7 +79,7 @@ class pet:
         while self.age<5:
             self.ch_stats()
             self.die()
-            self.age
+            self.older()
             action=int(input("""what action would you like to perform?
         1.check pet hunger
         2.check pet energy level
@@ -145,6 +145,9 @@ class pet:
                 self.age = ag
             time.sleep(3)
     def of_age(self):
+        self.ch_stats()
+        self.die()
+        self.older()
         time.sleep(3)
         action=int(input("""
 what action would you like to perform?
@@ -374,7 +377,7 @@ what action would you like to perform?
         else:
             print("You lose haha")
             m=m-15
-    def age(self):
+    def older(self):
         if self.a == 360:
             self.ag+=1
             self.a=0

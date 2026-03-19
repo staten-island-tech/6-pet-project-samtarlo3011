@@ -80,7 +80,7 @@ class pet:
             self.ch_stats()
             self.die()
             self.older()
-            action=int(input("""what action would you like to perform?
+            action=input("""what action would you like to perform?
         1.check pet hunger
         2.check pet energy level
         3.check pet affection level
@@ -97,7 +97,8 @@ class pet:
         14.train pet strength
         15.visit the vet
         16.go to sleep for the night
-        """))
+        """)
+        if action.isdigit():
             if action == 1:
                 self.c_hung()
             elif action == 2:
@@ -144,6 +145,8 @@ class pet:
                     ag=5
                 self.age = ag
             time.sleep(3)
+        else:
+            print("please enter a valid action index number")
     def of_age(self):
         self.ch_stats()
         self.die()
@@ -237,7 +240,6 @@ what action would you like to perform?
             self.sleep()
         else:
             print ("no such action found")
-
     def die(self):
         if self.hungry == "starving (losing)" or self.energy == "critically low (sleepy boy)(will start losing hp)" or self.clean == "critically low (will start losing hp)":
             self.hp-=3

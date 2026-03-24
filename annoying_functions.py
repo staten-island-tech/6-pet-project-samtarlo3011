@@ -103,7 +103,6 @@ class pet:
                     print("congrats on purchasing a new", i["species"], "thatll be $20!")
                     name=input("Now, name your new pet: " )
                     petsN.append(name)
-                    print([i])
                     pets.append(store[[i][0]["id"]])
         else:
             print("please enter a valid id")

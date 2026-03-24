@@ -98,7 +98,26 @@ def Village(N):
     for i in villageN[:-1]:
         final.append(villageN[z]+i)
         z+=1
-        print (final)
         real=sorted(final)
     return real[0]
-print(Village(5))
+
+
+def trees(N,trees=[]):
+    u=0
+    upot=0
+    d=0
+    dpot=0
+    x=1
+    for i in trees:
+        if i > trees[x]:
+            upot+=1
+            if dpot>d:
+                d=dpot
+            dpot=0
+        else:
+            dpot+=1
+            if upot>u:
+                u=upot
+            upot=0
+    return(u,d)
+print(trees(4,[1,3,4,2]))

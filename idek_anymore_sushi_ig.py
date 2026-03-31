@@ -12,12 +12,46 @@ sushi_orders = [
 ]
 
 def makerecipt():
-    recipt = {"price":0}
+    recipt = {"total":0}
     for i in sushi_orders:
-        recipt["price"] = recipt["price"]+i["price"]
+        recipt["total"] = recipt["total"]+i["price"]
         if i["name"] not in recipt:
-            recipt[i["name"]] = 1
+            recipt[i["name"]] = {
+                "price": i["price"],
+                "qty":1
+            }
         elif i["name"] in recipt:
-            recipt[i["name"]]+=1
+            recipt[i["name"]]["qty"]+=1
+        
     print(recipt)
-makerecipt()
+
+
+def receipt(orders) :
+    the_receipt = {}
+    for sushi in orders:
+        if sushi['name'] in the_receipt:
+            the_receipt[sushi['name' ]] ['qty' ] +=1
+        else:
+            the_receipt[sushi ['name' ]] = {
+                'price': sushi['price'],
+                'qty' : 1
+            }
+    for sushi, value in the_receipt.items():
+        price = value['price' ] * value['qty']
+        print(sushi, value['qty'], price)
+
+wards = {
+    "Cardiology": ["Alice", "Bob", "Carol"],
+    "Neurology":["Diana", "Eve"],
+    "Orthopedics": ["Frank", "Grace", "Hank"],
+    "Oncology":["Ivy", "Bob"]
+}
+def doctors():
+    staff = {}
+    for i,value in wards.items():
+        for x in value:
+            staff[x]=[]
+            staff[x].append(i)
+    print(staff)
+        
+doctors()

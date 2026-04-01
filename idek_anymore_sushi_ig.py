@@ -50,8 +50,10 @@ def doctors():
     staff = {}
     for i,value in wards.items():
         for x in value:
-            staff[x]=[]
-            staff[x].append(i)
+            if x not in staff:
+                staff[x]=[i]
+            else:
+                staff[x].append(i)
     print(staff)
         
 doctors()

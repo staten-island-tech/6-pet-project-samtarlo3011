@@ -32,7 +32,7 @@ class store:
             species = "Bird"
         return(store(speed,strength,size,gender,species))
 class pet:
-    def __init__(self, hungry, clean, energy, gender, species, hp, love, production, speed, strength, size, age,name,money,h,c,e,l,a,ag,):
+    def __init__(self, hungry, clean, energy, gender, species, hp, love, production, speed, strength, size, age,name,money,h,c,e,l,a,ag,ill):
         self.hp = hp 
         self.hungry = hungry
         self.clean = clean
@@ -53,6 +53,7 @@ class pet:
         self.l=l
         self.a=a
         self.ag=ag
+        self.ill=ill
     def New_Pet(gender,species,speed,strength,size):
         global pets
         global petsN
@@ -92,6 +93,7 @@ class pet:
                 species = "Bird"
         money=100
         hp=50
+        ill="no"
         hungry="low"
         clean="clean"
         energy="high"
@@ -101,13 +103,14 @@ class pet:
         name=input("""name your pet!
 """)
         petsN.append(name)
-        pets.append(pet(hungry, clean, energy, gender, species, hp, love, production, speed, strength, size, age,name,money,h,c,e,l,a,ag))
-        return pet(hungry, clean, energy, gender, species, hp, love, production, speed, strength, size, age,name,money,h,c,e,l,a,ag)
+        pets.append(pet(hungry, clean, energy, gender, species, hp, love, production, speed, strength, size, age,name,money,h,c,e,l,a,ag,ill))  
+        return pet(hungry, clean, energy, gender, species, hp, love, production, speed, strength, size, age,name,money,h,c,e,l,a,ag,ill)
     def basic_action(self):
         while self.age<5:
             self.ch_stats()
             self.die()
             self.older()
+            self.sickness()
             action=int(input("""what action would you like to perform?
         1.check pet hunger
         2.check pet energy level
@@ -155,7 +158,7 @@ class pet:
             elif action == 14:
                 self.t_st()
             elif action == 15:
-                print("this is visiting the vet i need to figure out what to do about this")
+                self.vet()
             elif action == 16:
                 self.sleep()
             elif action == 18:
@@ -176,6 +179,7 @@ class pet:
         self.ch_stats()
         self.die()
         self.older()
+        self.sickness()
         time.sleep(3)
         action=int(input("""
 what action would you like to perform?
@@ -247,7 +251,7 @@ what action would you like to perform?
             self.t_st()
             self.of_age()
         elif action == 16:
-            print("vet idk")
+            self.vet()
             self.of_age()
         elif action == 17:
             pet.petstore()
@@ -266,9 +270,19 @@ what action would you like to perform?
         else:
             print ("no such action found")
     def die(self):
-        if self.hungry == "starving (losing)" or self.energy == "critically low (sleepy boy)(will start losing hp)" or self.clean == "critically low (will start losing hp)":
+        if self.hungry == "starving (losing hp)" or self.energy == "critically low (sleepy boy)(will start losing hp)" :
             self.hp-=3
-        if self.hp == 0:
+        if self.ill == "itchy skin":
+            self.hp -= 5
+        elif self.ill == "bad teeth":
+            self.hp -= 10
+        elif self.ill == "diabetes":
+            self.hp -= 15
+        elif self.ill == "gassy (this is a real medical emergency that actual pets can have and it could be fatal. you learn something new every day)":
+            self.hp -= 20
+        elif self.ill == "rabies":
+            self.hp -= 25
+        if self.hp <= 0:
               print("Whoopsies, dead")
     def c_hung(self):
           print ("hunger=",self.hungry)
@@ -319,7 +333,7 @@ what action would you like to perform?
         elif self.c >3 and self.c <7:
             self.clean = "medium"
         elif self.c <= 0:
-            self.clean = "critically low (will start losing hp)"
+            self.clean = "critically low (risk of illness VERY high)"
             health=health-3
         elif self.c >=7:
             self.clean = "high"
@@ -437,6 +451,94 @@ what action would you like to perform?
                     newP=pet.New_Pet(i["gender"],i["species"],i["speed"],i["strength"],i["size"])
         else:
             print("please enter a valid id")
+    def sickness(self):
+        if self.ill == "no":
+            x = random.randint(1,5)
+            if self.clean == "critically low (risk of illness VERY high)":
+                if x > 1:
+                    self.ill = 1
+            elif self.clean == "low":
+                if x > 2:
+                    self.ill = 1
+            elif self.clean == "medium":
+                if x > 3:
+                    self.ill = 1
+            elif self.clean == "high":
+                if x > 4:
+                    self.ill = 1
+            elif self.clean == "stunningly clean":
+                if x > 5:
+                    self.ill = 1
+            if self.ill == 1:
+                sick = random.randint(1,5)
+                if sick == 1:
+                    self.ill = "itchy skin"
+                elif sick == 2:
+                    self.ill = "bad teeth"
+                elif sick == 3:
+                    self.ill = "diabetes"
+                elif sick == 4:
+                    self.ill = "gassy (this is a real medical emergency that actual pets can have and it could be fatal. you learn something new every day)"
+                elif sick == 5:
+                    self.ill = "rabies"
+    def vet(self):
+        print("welcome to the vet, a checkup is $90")
+        if self.money < 90:
+            print("it looks like you dont have enough *cough* broke boy *cough*. Come back when you get yo money up")
+            return
+        else:
+            self.money -= 90
+            print ("okay we'll check up on", self.name)
+            time.sleep(2)
+            if self.ill == "no":
+                print("your pet is healthy as can be! Thier current health is", self.hp, ". We can heal them 10hp for $100, or you can go home")
+                heal = int(input("""
+1.heal 
+2.leave"""))
+                if heal == 1:
+                    if self.money < 100:
+                        print("you have no money")
+                        return
+                    else:
+                        print("pet healed")
+                        self.hp+=10
+                        self.money-=100
+                        return
+                if heal == 2:
+                    return
+            else:
+                print("unfortunately your pet has", self.ill, "and is losing hp. We can cure them for:")
+                if self.ill == "itchy skin":
+                    print("$150")
+                    y=150
+                elif self.ill == "bad teeth":
+                    print("$200")
+                    y=200
+                elif self.ill == "diabetes":
+                    print("$250")
+                    y=250
+                elif self.ill == "gassy (this is a real medical emergency that actual pets can have and it could be fatal. you learn something new every day)":
+                    print("$300")
+                    y=300
+                elif self.ill == "rabies":
+                    print("$400")
+                    y=400
+                x=int(input("""
+Would you like the cure?
+1.yes
+2.no"""))
+                if x == 1:
+                    if self.money < y:
+                        print("you have no money")
+                        return
+                    else:
+                        print("pet healed")
+                        self.ill == "no"
+                        self.money-=y
+                        return
+                elif x == 2:
+                    print("okay see you later!")
+                    return
 def choose_petO():
     print("Congratulations!! You have successfully kept your pet",(pet1.name),"alive for five whole years! This means that you have unlocked some brand new activities. You can now access the shop to buy new pets. You can take your pets to competitions to test thier strength and speed against others or you could force your pets to work in factories! The world is your oyster! Have fun!") 
     for i in range(95):

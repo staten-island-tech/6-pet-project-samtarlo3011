@@ -283,7 +283,7 @@ what action would you like to perform?
         elif self.ill == "rabies":
             self.hp -= 25
         if self.hp <= 0:
-              print("Whoopsies, dead")
+              return("Whoopsies, dead")
     def c_hung(self):
           print ("hunger=",self.hungry)
     def c_ene(self):
@@ -551,7 +551,6 @@ def choose_petO():
                 if choice == i.name:
                     i.of_age()
                     print(petsN,pets)
-
 pet1=pet.New_Pet(0,0,0,0,0)
 while pet1.age < 5:
     pet1.basic_action()
